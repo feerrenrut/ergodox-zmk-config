@@ -79,5 +79,37 @@
 				                                                      &none                &none
 			>;
 		};
+
+		/* transparent starter
+		layer_1 {  // L_XYZ
+			bindings = <
+				&bootloader
+				&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans
+				                                        &trans  &trans       &trans  &trans
+				                                &trans  &trans  &trans       &trans  &trans  &trans
+				                                                &trans       &trans
+			>;
+		};
+		*/
+
+		/* blank starter
+		layer_1 {  // L_XYZ
+			bindings = <
+				&bootloader
+				&none  &none  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none  &none
+				&none  &none  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none  &none
+				&none  &none  &none  &none  &none  &none                     &none  &none  &none  &none  &none  &none
+				&none  &none  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none  &none
+				&none  &none  &none  &none  &none                                   &none  &none  &none  &none  &none
+				                                   &none  &none       &none  &none
+				                            &none  &none  &none       &none  &none  &none
+				                                          &none       &none
+			>;
+		};
+		*/
 	};
 };
