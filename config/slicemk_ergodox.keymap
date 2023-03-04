@@ -4,28 +4,43 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // layers
-#define MAC_BASE 0
-#define SYM_NUM 1
-#define NAV 2
+#define L_BASE 0
+#define L_MAC 1
+#define L_SYM_NUM 2
+#define L_NAV 3
 
 / {
 	keymap {
 		compatible = "zmk,keymap";
-		layer_0 {  // MAC BASE
+		layer_0 {  // L_BASE
 			bindings = <
 				&bootloader
-				&kp ESC             &kp F1       &kp F2       &kp F3       &kp F4       &kp F5  &none           &kp F12    &kp F6       &kp F7       &kp F8       &kp F9       &kp F10         &kp F11
+				&kp ESC             &kp F1       &kp F2       &kp F3       &kp F4       &kp F5  &to L_MAC       &kp F12    &kp F6       &kp F7       &kp F8       &kp F9       &kp F10         &kp F11
 				&kp TAB             &kp Q        &kp W        &kp E        &kp R        &kp T   &kp MINUS       &kp BKSP   &kp Y        &kp U        &kp I        &kp O        &kp P           &kp BSLH
 				&kp CAPS            &kp A        &kp S        &kp D        &kp F        &kp G                              &kp H        &kp J        &kp K        &kp L        &kp SEMICOLON   &kp SINGLE_QUOTE
 				&mt LSHIFT KP_LPAR  &kp Z        &kp X        &kp C        &kp V        &kp B   &kp EQUAL       &kp DEL    &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH        &mt RSHIFT KP_RPAR
 				&kp LCTL            &kp LMETA    &none        &none        &kp LALT                                                     &kp RALT     &none        &kp K_APP    &kp INS         &kp RCTL
-				                                                             &kp DEL      &kp HOME        &kp END    &kp INS
-				                                          &lt SYM_NUM SPC    &lt NAV TAB  &kp PGUP        &kp PGDN   &lt SYM_NUM SPC    &lt NAV RET
-				                                                                          &kp LGUI        &kp GRAVE
+				                                                                 &kp DEL        &kp HOME        &kp END    &kp INS
+				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &kp PGUP        &kp PGDN   &lt L_SYM_NUM SPC    &lt L_NAV RET
+				                                                                                &kp LGUI        &kp GRAVE
 			>;
 		};
 
-		layer_1 {
+		layer_1 {  // L_MAC
+			bindings = <
+				&bootloader
+				&trans  &trans  &trans  &trans  &trans  &trans  &to L_BASE   &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &kp B   &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+				&trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans
+				                                       &trans  &trans        &trans  &trans
+				                               &trans  &trans  &trans        &trans  &trans  &trans
+				                                               &trans        &trans
+			>;
+		};
+
+		layer_2 {
 			bindings = <
 				&bootloader
 				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &none &to 0 &none &none   &none   &none   &none   &bootloader
@@ -38,7 +53,7 @@
 				                                                                       &none &to 0
 			>;
 		};
-		layer_2 {
+		layer_3 {
 			bindings = <
 				&bootloader
 				&none &none &none &none    &none            &none             &none          &to 0            &none &none          &none           &none &none &none
@@ -51,7 +66,7 @@
 				                                                              &none          &none
 			>;
 		};
-		layer_3 {
+		layer_4 {
 			bindings = <
 				&bootloader
 				&none &none     &none        &none     &none    &none &none                &to 0                &none &none        &none        &none        &none        &none
