@@ -26,14 +26,26 @@
 #define W_CUT &kp LC(X)
 #define W_COPY &kp LC(C)
 #define W_PASTE &kp LC(V)
+#define AS(keycode) &as LS(keycode) keycode
 / {
+	behaviors {
+		as: auto_shift {
+			compatible = "zmk,behavior-hold-tap";
+			label = "AUTO_SHIFT";
+			#binding-cells = <2>;
+			tapping_term_ms = <135>;
+			quick_tap_ms = <0>;
+			flavor = "tap-preferred";
+			bindings = <&kp>, <&kp>;
+		};
+	};
 	keymap {
 		compatible = "zmk,keymap";
 		layer_0 {  // L_BASE
 			bindings = <
 				&bootloader
 				&kp ESC             &kp F1       &kp F2       &kp F3       &kp F4       &kp F5  &to L_MAC       &kp F12    &kp F6       &kp F7       &kp F8       &kp F9       &kp F10         &kp F11
-				&kp TAB             &kp Q        &kp W        &kp E        &kp R        &kp T   &kp MINUS       &kp BKSP   &kp Y        &kp U        &kp I        &kp O        &kp P           &kp BSLH
+				&kp TAB             AS(Q)        &kp W        &kp E        &kp R        &kp T   &kp MINUS       &kp BKSP   &kp Y        &kp U        &kp I        &kp O        &kp P           &kp BSLH
 				&kp CAPS            &kp A        &kp S        &kp D        &kp F        &kp G                              &kp H        &kp J        &kp K        &kp L        &kp SEMICOLON   &kp SINGLE_QUOTE
 				&mt LSHIFT LPAR     &kp Z        &kp X        &kp C        &kp V        &kp B   &kp EQUAL       &kp DEL    &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH        &mt RSHIFT RPAR
 				&kp LCTL            &kp LMETA    &none        &none        &kp LALT                                                     &kp RALT     &none        &kp K_APP    &kp INS         &kp RCTL
