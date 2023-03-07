@@ -7,7 +7,21 @@
 #define L_BASE 0
 #define L_MAC 1
 #define L_SYM_NUM 2
-#define L_NAV 3
+#define L_NUMPAD 3
+#define L_NAV 4
+
+// not implemented
+#define MOUSE_LCLK &none
+#define MOUSE_MCLK &none
+#define MOUSE_RCLK &none
+#define M_UP &none
+#define M_DOWN &none
+#define M_LEFT &none
+#define M_RIGHT &none
+#define M_WHEEL_L &none
+#define M_WHEEL_R &none
+#define M_WHEEL_U &none
+#define M_WHEEL_D &none
 
 / {
 	keymap {
@@ -18,7 +32,7 @@
 				&kp ESC             &kp F1       &kp F2       &kp F3       &kp F4       &kp F5  &to L_MAC       &kp F12    &kp F6       &kp F7       &kp F8       &kp F9       &kp F10         &kp F11
 				&kp TAB             &kp Q        &kp W        &kp E        &kp R        &kp T   &kp MINUS       &kp BKSP   &kp Y        &kp U        &kp I        &kp O        &kp P           &kp BSLH
 				&kp CAPS            &kp A        &kp S        &kp D        &kp F        &kp G                              &kp H        &kp J        &kp K        &kp L        &kp SEMICOLON   &kp SINGLE_QUOTE
-				&mt LSHIFT KP_LPAR  &kp Z        &kp X        &kp C        &kp V        &kp B   &kp EQUAL       &kp DEL    &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH        &mt RSHIFT KP_RPAR
+				&mt LSHIFT LPAR     &kp Z        &kp X        &kp C        &kp V        &kp B   &kp EQUAL       &kp DEL    &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH        &mt RSHIFT RPAR
 				&kp LCTL            &kp LMETA    &none        &none        &kp LALT                                                     &kp RALT     &none        &kp K_APP    &kp INS         &kp RCTL
 				                                                                 &kp DEL        &kp HOME        &kp END    &kp INS
 				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &kp PGUP        &kp PGDN   &lt L_SYM_NUM SPC    &lt L_NAV RET
@@ -40,43 +54,43 @@
 			>;
 		};
 
-		layer_2 {
+		layer_2 { // L_SYM_NUM 
 			bindings = <
 				&bootloader
-				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &none &to 0 &none &none   &none   &none   &none   &bootloader
-				&bt BT_CLR   &kp F1       &kp F2       &kp F3       &kp F4       &none &none &none &none &kp F13 &kp F14 &kp F15 &kp F16 &out OUT_USB
-				&none        &kp F5       &kp F6       &kp F7       &kp F8       &none             &none &kp F17 &kp F18 &kp F19 &kp F20 &out OUT_BLE
-				&none        &kp F9       &kp F10      &kp F11      &kp F12      &none &none &none &none &kp F21 &kp F22 &kp F23 &kp F24 &out OUT_TOG
-				&none        &none        &none        &none        &none                                &none   &none   &none   &none   &none
-				                                                                 &none &none &none &none
-				                                                    &none        &none &none &none &none &none
-				                                                                       &none &to 0
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &trans &to L_NUMPAD &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_SUBTRACT  &trans
+				&trans   &none        &none        &kp LBKT     &kp RBKT   &kp PIPE  &trans     &trans &none  &kp NUMBER_7 &kp NUMBER_8   &kp NUMBER_9     &kp KP_PLUS      &trans
+				&trans   &kp APOS     &kp DQT      &kp LPAR     &kp RPAR   &kp GRAVE                   &none  &kp NUMBER_4 &kp NUMBER_5   &kp NUMBER_6     &kp RETURN2      &trans
+				&trans   &none        &none        &kp LT       &kp GT     &kp TILDE &trans     &trans &none  &kp NUMBER_1 &kp NUMBER_2   &kp NUMBER_3     &kp RETURN2      &trans
+				&trans   &trans       &trans       &trans       &trans                                        &trans       &kp NUMBER_0   &kp KP_DOT       &trans           &trans
+				                                                               &trans &trans   &trans  &trans
+				                                                       &trans  &trans &trans   &trans  &trans &trans
+				                                                                      &trans   &trans
 			>;
 		};
-		layer_3 {
+		layer_3 {  // L_NUMPAD
 			bindings = <
 				&bootloader
-				&none &none &none &none    &none            &none             &none          &to 0            &none &none          &none           &none &none &none
-				&none &none &none &none    &none            &none             &none          &kp C_PLAY_PAUSE &none &none          &none           &none &none &none
-				&none &none &none &kp PLUS &kp EQUAL        &none                                             &none &kp MINUS      &kp UNDERSCORE  &none &none &none
-				&to 0 &none &none &kp LBKT &kp RBKT         &none             &kp C_PREVIOUS &kp C_NEXT       &none &kp LEFT_BRACE &kp RIGHT_BRACE &none &none &to 0
-				&none &none &none &none    &none                                                                    &none          &none           &none &none &none
-				                                            &none             &none          &none            &none
-				                           &kp SINGLE_QUOTE &kp DOUBLE_QUOTES &none          &none            &none &none
-				                                                              &none          &none
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &kp KP_NUMLOCK &to L_SYM_NUM &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_SUBTRACT  &trans
+				&trans   &none        &none        &kp LBKT     &kp RBKT   &kp PIPE  &trans     &trans &to L_BASE     &kp KP_N7     &kp KP_N8      &kp KP_N9        &kp KP_PLUS      &trans
+				&trans   &trans       &kp DQT      &kp LPAR     &kp RPAR   &kp GRAVE                   &none          &kp KP_N4     &kp KP_N5      &kp KP_N6        &kp RETURN2      &trans
+				&trans   &none        &none        &kp LT       &kp GT     &kp TILDE &trans     &trans &none          &kp KP_N1     &kp KP_N2      &kp KP_N3        &kp RETURN2      &trans
+				&trans   &trans       &trans       &trans       &trans                                                &trans        &kp KP_N0      &kp KP_DOT       &trans           &trans
+				                                                               &trans &trans   &trans  &trans
+				                                                       &trans  &trans &trans   &trans  &trans &trans
+				                                                                      &trans   &trans
 			>;
 		};
-		layer_4 {
+		layer_4 { // L_NAV
 			bindings = <
 				&bootloader
-				&none &none     &none        &none     &none    &none &none                &to 0                &none &none        &none        &none        &none        &none
-				&none &none     &none        &none     &none    &none &none                &none                &none &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &none        &none
-				&none &kp SLASH &kp ASTERISK &kp MINUS &kp PLUS &none                                           &none &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_0 &kp BACKSPACE
-				&none &none     &none        &none     &kp DOT  &none &kp C_BRIGHTNESS_DEC &kp C_BRIGHTNESS_INC &none &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &none        &none
-				&none &none     &none        &none     &none                                                          &none        &none        &none        &none        &to 0
-				                                                &none &none                &none                &none
-				                                       &none    &none &none                &none                &none &none
-				                                                      &none                &none
+				&trans &trans     &kp C_BRI_DN  &kp C_BRI_UP  &none          &bt BT_PRV &bt BT_NXT      &trans  &trans        &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE      &trans       &trans
+				&trans &none      M_WHEEL_L     M_UP          M_WHEEL_R      &none      &trans          &trans  &kp PAGE_UP   &kp HOME       &kp UP_ARROW   &kp END         &none        &kp C_PREVIOUS
+				&trans M_WHEEL_U  M_LEFT        M_DOWN        M_RIGHT        &none                              &kp PAGE_DOWN &kp LEFT_ARROW &kp DOWN_ARROW &kp RIGHT_ARROW &none        &kp C_PLAY_PAUSE
+				&trans M_WHEEL_D  &kp K_CUT     &kp K_COPY    &kp K_PASTE    &none      &trans          &trans  &none         MOUSE_LCLK     MOUSE_MCLK     MOUSE_RCLK      &none        &kp C_NEXT
+				&trans &trans     &trans        &trans        &trans                                                          &trans         &trans         &trans          &trans       &trans
+				                                                                &trans &trans           &trans  &trans
+				                                                       &trans   &trans &trans           &trans  &trans   &trans
+				                                                                       &trans           &trans
 			>;
 		};
 
