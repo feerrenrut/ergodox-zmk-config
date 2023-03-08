@@ -33,7 +33,7 @@
 			compatible = "zmk,behavior-hold-tap";
 			label = "AUTO_SHIFT";
 			#binding-cells = <2>;
-			tapping_term_ms = <135>;
+			tapping_term_ms = <175>;
 			quick_tap_ms = <0>;
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&kp>;
@@ -45,13 +45,13 @@
 			bindings = <
 				&bootloader
 				&kp ESC             &kp F1       &kp F2       &kp F3       &kp F4       &kp F5  &to L_MAC       &kp F12    &kp F6       &kp F7       &kp F8       &kp F9       &kp F10         &kp F11
-				&kp TAB             AS(Q)        &kp W        &kp E        &kp R        &kp T   &kp MINUS       &kp BKSP   &kp Y        &kp U        &kp I        &kp O        &kp P           &kp BSLH
-				&kp CAPS            &kp A        &kp S        &kp D        &kp F        &kp G                              &kp H        &kp J        &kp K        &kp L        &kp SEMICOLON   &kp SINGLE_QUOTE
-				&mt LSHIFT LPAR     &kp Z        &kp X        &kp C        &kp V        &kp B   &kp EQUAL       &kp DEL    &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH        &mt RSHIFT RPAR
+				&kp TAB             AS(Q)        AS(W)        AS(E)        AS(R)        AS(T)   AS(MINUS)       &kp BKSP   AS(Y)        AS(U)        AS(I)        AS(O)        AS(P)           &kp BSLH
+				&kp CAPS            AS(A)        AS(S)        AS(D)        AS(F)        AS(G)                              AS(H)        AS(J)        AS(K)        AS(L)        AS(SEMICOLON)   AS(SINGLE_QUOTE)
+				&mt LSHIFT LPAR     AS(Z)        AS(X)        AS(C)        AS(V)        AS(B)   AS(EQUAL)       &kp DEL    AS(N)        AS(M)        AS(CMMA)     AS(DOT)      AS(FSLH)        &mt RSHIFT RPAR
 				&kp LCTL            &kp LMETA    &none        &none        &kp LALT                                                     &kp RALT     &none        &kp K_APP    &kp INS         &kp RCTL
-				                                                                 &kp DEL        &kp HOME        &kp END    &kp INS
-				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &kp PGUP        &kp PGDN   &lt L_SYM_NUM SPC    &lt L_NAV RET
-				                                                                                &kp LGUI        &kp GRAVE
+				                                                                 &none          &none           &none    &none
+				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &none           &none    &lt L_SYM_NUM SPC    &lt L_NAV RET
+				                                                                                &none           &none
 			>;
 		};
 
@@ -72,11 +72,11 @@
 		layer_2 { // L_SYM_NUM 
 			bindings = <
 				&bootloader
-				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &trans &to L_NUMPAD &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_SUBTRACT  &trans
-				&trans   &none        &none        &kp LBKT     &kp RBKT   &kp PIPE  &trans     &trans &none  &kp NUMBER_7 &kp NUMBER_8   &kp NUMBER_9     &kp KP_PLUS      &trans
-				&trans   &kp APOS     &kp DQT      &kp LPAR     &kp RPAR   &kp GRAVE                   &none  &kp NUMBER_4 &kp NUMBER_5   &kp NUMBER_6     &kp RETURN2      &trans
-				&trans   &none        &none        &kp LT       &kp GT     &kp TILDE &trans     &trans &none  &kp NUMBER_1 &kp NUMBER_2   &kp NUMBER_3     &kp RETURN2      &trans
-				&trans   &trans       &trans       &trans       &trans                                        &trans       &kp NUMBER_0   &kp KP_DOT       &trans           &trans
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &trans &to L_NUMPAD AS(KP_DIVIDE)  AS(KP_MULTIPLY)  AS(KP_SUBTRACT)  &trans
+				&trans   &none        &none        AS(LBKT)     AS(RBKT)   AS(PIPE)  &trans     &trans &none  AS(NUMBER_7) AS(NUMBER_8)   AS(NUMBER_9)     AS(KP_PLUS)      &trans
+				&trans   AS(APOS)     AS(DQT)      AS(LPAR)     AS(RPAR)   AS(GRAVE)                   &none  AS(NUMBER_4) AS(NUMBER_5)   AS(NUMBER_6)     AS(RETURN2)      &trans
+				&trans   &none        &none        AS(LT)       AS(GT)     AS(TILDE) &trans     &trans &none  AS(NUMBER_1) AS(NUMBER_2)   AS(NUMBER_3)     AS(RETURN2)      &trans
+				&trans   &trans       &trans       &trans       &trans                                        &trans       AS(NUMBER_0)   AS(KP_DOT)       &trans           &trans
 				                                                               &trans &trans   &trans  &trans
 				                                                       &trans  &trans &trans   &trans  &trans &trans
 				                                                                      &trans   &trans
@@ -85,11 +85,11 @@
 		layer_3 {  // L_NUMPAD
 			bindings = <
 				&bootloader
-				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &kp KP_NUMLOCK &to L_SYM_NUM &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_SUBTRACT  &trans
-				&trans   &none        &none        &kp LBKT     &kp RBKT   &kp PIPE  &trans     &trans &to L_BASE     &kp KP_N7     &kp KP_N8      &kp KP_N9        &kp KP_PLUS      &trans
-				&trans   &trans       &kp DQT      &kp LPAR     &kp RPAR   &kp GRAVE                   &none          &kp KP_N4     &kp KP_N5      &kp KP_N6        &kp RETURN2      &trans
-				&trans   &none        &none        &kp LT       &kp GT     &kp TILDE &trans     &trans &none          &kp KP_N1     &kp KP_N2      &kp KP_N3        &kp RETURN2      &trans
-				&trans   &trans       &trans       &trans       &trans                                                &trans        &kp KP_N0      &kp KP_DOT       &trans           &trans
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans AS(KP_NUMLOCK)  &to L_SYM_NUM  &trans          &trans           &trans      &trans
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &to L_BASE      AS(KP_N7)      AS(KP_N8)       AS(KP_N9)         &trans      &trans
+				&trans   &trans       &trans       &trans       &trans     &trans                      &none           AS(KP_N4)      AS(KP_N5)       AS(KP_N6)         &trans      &trans
+				&trans   &trans       &trans       &trans       &trans     &trans    &trans     &trans &none           AS(KP_N1)      AS(KP_N2)       AS(KP_N3)         &trans      &trans
+				&trans   &trans       &trans       &trans       &trans                                                 &trans         AS(KP_N0)       AS(KP_DOT)        &trans      &trans
 				                                                               &trans &trans   &trans  &trans
 				                                                       &trans  &trans &trans   &trans  &trans &trans
 				                                                                      &trans   &trans
