@@ -2,9 +2,11 @@ manifest:
   remotes:
     - name: slicemk
       url-base: https://github.com/slicemk
+    - name: feerrenrut
+      url-base: https://github.com/feerrenrut
   projects:
     - name: zmk
-      remote: slicemk
+      remote: feerrenrut
       revision: main
       import: app/west.yml
   self:
