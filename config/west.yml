@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: feerrenrut
-      revision: main
+      revision: v20230228-mouse
       import: app/west.yml
   self:
     path: config
