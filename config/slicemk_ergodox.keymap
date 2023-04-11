@@ -48,6 +48,13 @@
 #define W_COPY &kp LC(C)
 #define W_PASTE &kp LC(V)
 
+// Mac Helpers
+#define M_LINE_START &kp RG(LEFT_ARROW)
+#define M_LINE_END &kp RG(RIGHT_ARROW)
+#define M_CUT &kp RG(X)
+#define M_COPY &kp RG(C)
+#define M_PASTE &kp RG(V)
+
 / { // root
 	macros {
 		LCtrlAlpha:LCtrlAlpha {
@@ -229,11 +236,11 @@
 		layer_Mac_Nav { // L_MAC_NAV
 			bindings = <
 				&bootloader
-				&trans  &trans     &trans      &trans  &trans     &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-				&trans  &trans     M_WHEEL_R   &trans  M_WHEEL_L  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-				&trans  M_WHEEL_D  &trans      &trans  &trans     &trans                       &trans  &trans  &trans  &trans  &trans  &trans
-				&trans  M_WHEEL_U  &trans      &trans  &trans     &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-				&trans  &trans     &trans      &trans  &trans                                       &trans  &trans  &trans  &trans  &trans
+				&trans  &trans     &trans      &trans  &trans     &trans  &trans       &trans  &trans  &trans       &trans  &trans      &trans  &trans
+				&trans  &trans     M_WHEEL_R   &trans  M_WHEEL_L  &trans  &trans       &trans  &trans  M_LINE_START &trans  M_LINE_END  &trans  &trans
+				&trans  M_WHEEL_D  &trans      &trans  &trans     &trans                       &trans  &trans       &trans  &trans      &trans  &trans
+				&trans  M_WHEEL_U  M_CUT       M_COPY  M_PASTE     &trans  &trans       &trans  &trans  &trans       &trans  &trans      &trans  &trans
+				&trans  &trans     &trans      &trans  &trans                                       &trans          &trans  &trans      &trans  &trans
 				                                        &trans  &trans       &trans  &trans
 				                                &trans  &trans  &trans       &trans  &trans  &trans
 				                                                &trans       &trans
