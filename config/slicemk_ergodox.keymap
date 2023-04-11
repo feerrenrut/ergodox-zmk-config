@@ -13,7 +13,7 @@
 #define L_NAV 5
 #define L_MAC_NAV 6
 
-// not implemented
+// Mouse helpers
 #define MOUSE_LCLK &mkp LCLK
 #define MOUSE_MCLK &mkp MCLK
 #define MOUSE_RCLK &mkp RCLK
@@ -26,24 +26,29 @@
 #define M_WHEEL_U &mwh SCROLL_UP
 #define M_WHEEL_D &mwh SCROLL_DOWN
 
+// Mouse movement settings
 &mmv {
 	delay-ms = <0>; // <0> default
 	time-to-max-speed-ms = <300>; // <300> default
 	acceleration-exponent = <1>; // <1> default
 };
 
+// Mouse Wheel settings
 &mwh {
 	delay-ms = <0>; // <0> default
 	time-to-max-speed-ms = <10>; // <300> dafault
 	acceleration-exponent = <0>; // <0> default
 };
 
+// Auto shift helper
+#define AS(keycode) &as LS(keycode) keycode
+
+// Windows helpers
 #define W_CUT &kp LC(X)
 #define W_COPY &kp LC(C)
 #define W_PASTE &kp LC(V)
-#define AS(keycode) &as LS(keycode) keycode
 
-/ {
+/ { // root
 	macros {
 		LCtrlAlpha:LCtrlAlpha {
 			compatible = "zmk,behavior-macro";
@@ -111,7 +116,8 @@
 				<&macro_pause_for_release>,
 				<&macro_release &mo L_NOAS &kp RALT> ;
 		};
-	};
+	}; // macros
+
 	behaviors {
 		as: auto_shift {
 			compatible = "zmk,behavior-hold-tap";
@@ -122,14 +128,16 @@
 			flavor = "tap-preferred";
 			bindings = <&kp>, <&kp>;
 		};
-	};
+	}; // behaviors
+
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
 				if-layers = <L_MAC L_NAV>;
 				then-layer = <L_MAC_NAV>;
 		};
-};
+	}; // conditional_layers
+
 	keymap {
 		compatible = "zmk,keymap";
 		layer_AS {  // L_BASE
@@ -143,8 +151,8 @@
 				                                                                 &none          &none           &none    &none
 				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &none           &none    &lt L_SYM_NUM SPC    &lt L_NAV RET
 				                                                                                &none           &kp TILDE
-			>;
-		};
+			>; // bindings
+		}; // layer
 
 		layer_noAS {  // L_XYZ
 			bindings = <
@@ -157,8 +165,8 @@
 				                                        &trans  &trans       &trans  &trans
 				                                &trans  &trans  &trans       &trans  &trans  &trans
 				                                                &trans       &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
 
 		layer_MAC {  // L_MAC
 			bindings = <
@@ -171,8 +179,8 @@
 				                                       &trans  &trans        &trans  &trans
 				                               &trans  &trans  &trans        &trans  &trans  &trans
 				                                               &trans        &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
 
 
 
@@ -187,8 +195,9 @@
 				                                                               &trans &trans   &trans  &trans
 				                                                       &trans  &trans &trans   &trans  &trans &trans
 				                                                                      &trans   &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
+
 		layer_NumPad {  // L_NUMPAD
 			bindings = <
 				&bootloader
@@ -200,8 +209,9 @@
 				                                                               &trans &trans   &trans  &trans
 				                                                       &trans  &trans &trans   &trans  &trans &trans
 				                                                                      &trans   &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
+
 		layer_Nav { // L_NAV
 			bindings = <
 				&bootloader
@@ -213,8 +223,8 @@
 				                                                                &trans &trans           &trans      &trans
 				                                                       &trans   &trans &trans           &trans      &trans   &trans
 				                                                                       &trans           &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
 
 		layer_Mac_Nav { // L_MAC_NAV
 			bindings = <
@@ -227,8 +237,8 @@
 				                                        &trans  &trans       &trans  &trans
 				                                &trans  &trans  &trans       &trans  &trans  &trans
 				                                                &trans       &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
 
 		/* transparent starter
 		layer_1 {  // L_XYZ
@@ -242,8 +252,8 @@
 				                                        &trans  &trans       &trans  &trans
 				                                &trans  &trans  &trans       &trans  &trans  &trans
 				                                                &trans       &trans
-			>;
-		};
+			>; // bindings
+		}; // layer
 		*/
 
 		/* blank starter
@@ -258,8 +268,8 @@
 				                                   &none  &none       &none  &none
 				                            &none  &none  &none       &none  &none  &none
 				                                          &none       &none
-			>;
-		};
+			>; // bindings
+		}; // layer
 		*/
-	};
-};
+	}; // keymap
+}; // root
