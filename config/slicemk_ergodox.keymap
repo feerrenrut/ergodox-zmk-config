@@ -157,7 +157,7 @@
 				&LCtrlAlpha         &LMetaAlpha  &none        &none        &LAltAlpha                                                   &RAltAlpha   &none        &kp K_APP    &kp INS         &RCtrlAlpha
 				                                                                 &none          &none           &none    &none
 				                                            &lt L_SYM_NUM SPC    &lt L_NAV TAB  &none           &none    &lt L_SYM_NUM SPC    &lt L_NAV RET
-				                                                                                &none           &kp GRAV
+				                                                                                &none           AS(GRAV)
 			>; // bindings
 		}; // layer
 
@@ -171,7 +171,7 @@
 				&trans  &trans  &trans  &trans  &trans                                       &trans  &trans   &trans  &trans        &trans
 				                                        &trans  &trans       &trans  &trans
 				                                &trans  &trans  &trans       &trans  &trans  &trans
-				                                                &trans       &trans
+				                                                &trans       &kp GRAV
 			>; // bindings
 		}; // layer
 
