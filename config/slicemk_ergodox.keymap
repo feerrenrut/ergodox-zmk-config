@@ -14,17 +14,30 @@
 #define L_MAC_NAV 6
 
 // Mouse helpers
+#define MY_MOUSE_SPEED 1400 // must be less than 16 bit signed (-32,768 to 32,767). Default 600
+#define MY_MOVE_UP MOVE_VERT(-MY_MOUSE_SPEED)
+#define MY_MOVE_DOWN MOVE_VERT(MY_MOUSE_SPEED)
+#define MY_MOVE_LEFT MOVE_HOR(-MY_MOUSE_SPEED)
+#define MY_MOVE_RIGHT MOVE_HOR(MY_MOUSE_SPEED)
+
+
 #define MOUSE_LCLK &mkp LCLK
 #define MOUSE_MCLK &mkp MCLK
 #define MOUSE_RCLK &mkp RCLK
-#define M_UP &mmv MOVE_UP
-#define M_DOWN &mmv MOVE_DOWN
-#define M_LEFT &mmv MOVE_LEFT
-#define M_RIGHT &mmv MOVE_RIGHT
-#define M_WHEEL_L &mwh SCROLL_LEFT
-#define M_WHEEL_R &mwh SCROLL_RIGHT
-#define M_WHEEL_U &mwh SCROLL_UP
-#define M_WHEEL_D &mwh SCROLL_DOWN
+#define M_UP &mmv MY_MOVE_UP
+#define M_DOWN &mmv MY_MOVE_DOWN
+#define M_LEFT &mmv MY_MOVE_LEFT
+#define M_RIGHT &mmv MY_MOVE_RIGHT
+
+#define MY_SCROLL_SPEED 10 // must be less than 8 bit signed (	-128 to 127). Default 10
+#define MY_SCROLL_UP SCROLL_VERT(MY_SCROLL_SPEED)
+#define MY_SCROLL_DOWN SCROLL_VERT(-MY_SCROLL_SPEED)
+#define MY_SCROLL_LEFT SCROLL_HOR(-MY_SCROLL_SPEED)
+#define MY_SCROLL_RIGHT SCROLL_HOR(MY_SCROLL_SPEED)
+#define M_WHEEL_L &mwh MY_SCROLL_LEFT
+#define M_WHEEL_R &mwh MY_SCROLL_RIGHT
+#define M_WHEEL_U &mwh MY_SCROLL_UP
+#define M_WHEEL_D &mwh MY_SCROLL_DOWN
 
 // Mouse movement settings
 &mmv {
@@ -36,7 +49,7 @@
 // Mouse Wheel settings
 &mwh {
 	delay-ms = <0>; // <0> default
-	time-to-max-speed-ms = <10>; // <300> dafault
+	time-to-max-speed-ms = <0>; // <300> dafault
 	acceleration-exponent = <0>; // <0> default
 };
 
